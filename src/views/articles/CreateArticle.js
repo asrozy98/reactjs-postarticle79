@@ -24,7 +24,6 @@ const CreateUser = () => {
   const { articleForm, loading, error, message } = useSelector((state) => state.ArticlesReducer)
 
   const handleChange = (value, inputType) => {
-    console.log(articleForm)
     dispatch(onArticleForm(value, inputType))
   }
 
@@ -50,7 +49,7 @@ const CreateUser = () => {
                 <CFormInput
                   type="text"
                   id="title"
-                  // value={articleForm.title ?? ''}
+                  value={articleForm.title}
                   placeholder="Title"
                   onInput={(e) => handleChange(e.target.value, 'title')}
                 />
@@ -60,7 +59,7 @@ const CreateUser = () => {
                 <CFormInput
                   type="text"
                   id="category"
-                  value={articleForm.category ?? ''}
+                  value={articleForm.category}
                   placeholder="Category"
                   onInput={(e) => handleChange(e.target.value, 'category')}
                 />
@@ -71,7 +70,7 @@ const CreateUser = () => {
                   id="content"
                   rows="3"
                   text="Must be 8-20 words long."
-                  value={articleForm.content ?? ''}
+                  value={articleForm.content}
                   placeholder="Content"
                   onInput={(e) => handleChange(e.target.value, 'content')}
                 ></CFormTextarea>

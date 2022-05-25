@@ -9,6 +9,7 @@ import {
   GetArticleById,
   EditArticleById,
 } from '../actions/Articles'
+
 const initialState = {
   loading: false,
   data: {
@@ -42,17 +43,21 @@ const articles = (state = initialState, action) => {
       return {
         ...state,
         loading: action.payload.loading,
+        error: action.payload.error,
+        message: action.payload.message,
         data: {
+          ...state.data,
           data: action.payload.data,
           allCount: action.payload.allCount,
           perPageCount: action.payload.perPageCount,
         },
-        error: action.payload.error,
       }
     case GetArticleById:
       return {
         ...state,
         loading: action.payload.loading,
+        message: action.payload.message,
+        error: action.payload.error,
         articleForm: {
           ...state.articleForm,
           title: action.payload.title,
@@ -61,8 +66,6 @@ const articles = (state = initialState, action) => {
           created_at: action.payload.created_at,
           updated_at: action.payload.updated_at,
         },
-        message: action.payload.message,
-        error: action.payload.error,
       }
     case GetCountArticle:
       return {
@@ -82,44 +85,46 @@ const articles = (state = initialState, action) => {
     case OnArticleForm:
       return {
         ...state,
+        loading: action.payload.loading,
+        message: action.payload.message,
+        error: action.payload.error,
         articleForm: {
           ...state.articleForm,
           [action.payload.field]: action.payload.value,
         },
-        loading: action.payload.loading,
-        message: action.payload.message,
-        error: action.payload.error,
       }
     case CreateArticle:
       return {
         ...state,
-        data: false,
+        loading: action.payload.loading,
+        message: action.payload.message,
+        error: action.payload.error,
         articleForm: {
           ...state.articleForm,
           title: action.payload.title,
           category: action.payload.category,
           content: action.payload.content,
         },
-        loading: action.payload.loading,
-        message: action.payload.message,
-        error: action.payload.error,
       }
     case EditArticleById:
       return {
         ...state,
         loading: action.payload.loading,
+        message: action.payload.message,
+        error: action.payload.error,
         articleForm: {
           ...state.articleForm,
           title: action.payload.title,
           category: action.payload.category,
           content: action.payload.content,
         },
-        message: action.payload.message,
-        error: action.payload.error,
       }
     case UpdateArticle:
       return {
         ...state,
+        loading: action.payload.loading,
+        message: action.payload.message,
+        error: action.payload.error,
         articleForm: {
           ...state.articleForm,
           title: action.payload.title,
@@ -127,9 +132,6 @@ const articles = (state = initialState, action) => {
           content: action.payload.content,
           status: action.payload.status,
         },
-        loading: action.payload.loading,
-        message: action.payload.message,
-        error: action.payload.error,
       }
     case ConfirmDelete:
       return {

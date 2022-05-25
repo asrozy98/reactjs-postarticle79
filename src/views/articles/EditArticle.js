@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   CButton,
   CButtonGroup,
@@ -41,7 +41,6 @@ const EditUser = () => {
           </CCardHeader>
           <CCardBody>
             {message && <div className="alert alert-warning">{message}</div>}
-            {console.log('error ini:', error)}
             {error && Array.isArray(error)
               ? error.map((item, index) => (
                   <div key={index} className="alert alert-danger">
@@ -55,7 +54,7 @@ const EditUser = () => {
                 <CFormInput
                   type="text"
                   id="title"
-                  value={articleForm.title ?? ''}
+                  value={articleForm.title}
                   placeholder="Title"
                   onInput={(e) => handleChange(e.target.value, 'title')}
                 />
@@ -65,7 +64,7 @@ const EditUser = () => {
                 <CFormInput
                   type="text"
                   id="category"
-                  value={articleForm.category ?? ''}
+                  value={articleForm.category}
                   placeholder="Category"
                   onInput={(e) => handleChange(e.target.value, 'category')}
                 />
@@ -76,7 +75,7 @@ const EditUser = () => {
                   id="content"
                   rows="3"
                   text="Must be 8-20 words long."
-                  value={articleForm.content ?? ''}
+                  value={articleForm.content}
                   placeholder="Content"
                   onInput={(e) => handleChange(e.target.value, 'content')}
                 ></CFormTextarea>
@@ -104,7 +103,6 @@ const EditUser = () => {
                       color="success"
                       onClick={() => {
                         dispatch(updateArticle(params.id, articleForm, 'Publish'))
-                        // dispatch(editArticleById(params.id))
                       }}
                     >
                       Publish
@@ -115,7 +113,6 @@ const EditUser = () => {
                       color="primary"
                       onClick={() => {
                         dispatch(updateArticle(params.id, articleForm, 'Draft'))
-                        // dispatch(editArticleById(params.id))
                       }}
                     >
                       Draft

@@ -18,27 +18,19 @@ import {
   CTableRow,
 } from '@coreui/react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getArticles, updateArticle } from 'src/redux/actions/Articles'
+import { getArticles } from 'src/redux/actions/Articles'
 import DeleteArticle from './DeleteArticle'
 import CIcon from '@coreui/icons-react'
-import { cilNewspaper, cilPencil, cilTrash } from '@coreui/icons'
+import { cilNewspaper } from '@coreui/icons'
 
 const Preview = () => {
-  const { loading, data, message, error } = useSelector((state) => state.ArticlesReducer)
+  const { loading, data, error } = useSelector((state) => state.ArticlesReducer)
   const [page, setPage] = useState(1)
   const dispatch = useDispatch()
 
-  console.log('ini data:', data)
   useEffect(() => {
     dispatch(getArticles(page, 'Publish'))
-    if (message) {
-      dispatch(getArticles(page, 'Publish'))
-    }
   }, [])
-
-  const setStatus = (id, article, status) => {
-    dispatch(updateArticle(id, article, status))
-  }
 
   return (
     <CRow>

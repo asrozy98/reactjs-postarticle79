@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { NavLink, useParams } from 'react-router-dom'
 import { CButton, CCard, CCardBody, CCardFooter, CCardHeader, CCol, CRow } from '@coreui/react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,10 +9,9 @@ import moment from 'moment'
 const PreviewItem = () => {
   let params = useParams()
   moment.locale('id')
-  const { loading, articleForm, message, error } = useSelector((state) => state.ArticlesReducer)
+  const { articleForm } = useSelector((state) => state.ArticlesReducer)
   const dispatch = useDispatch()
 
-  console.log('ini data:', articleForm)
   useEffect(() => {
     dispatch(getArticleById(params.id))
   }, [])

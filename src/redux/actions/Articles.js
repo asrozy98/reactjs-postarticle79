@@ -93,7 +93,6 @@ export const getArticleById = (id) => {
     axios
       .get('http://localhost:8080/article/' + id)
       .then((res) => {
-        console.log('sfsdg::":', res.data.data)
         dispatch({
           type: GetArticleById,
           payload: {
@@ -158,7 +157,6 @@ export const deleteArticle = (id) => {
 
 export const confirmDelete = (show, articleData) => {
   return (dispatch) => {
-    console.log(articleData)
     dispatch({
       type: ConfirmDelete,
       payload: {
@@ -170,8 +168,6 @@ export const confirmDelete = (show, articleData) => {
 }
 
 export const onArticleForm = (value, inputType) => {
-  console.log('log res:', value, inputType)
-
   return (dispatch) => {
     dispatch({
       type: OnArticleForm,
@@ -185,7 +181,6 @@ export const onArticleForm = (value, inputType) => {
 
 export const createArticle = (article, status) => {
   return (dispatch) => {
-    console.log(article)
     dispatch({
       type: CreateArticle,
       payload: {
@@ -203,7 +198,6 @@ export const createArticle = (article, status) => {
         status: status,
       })
       .then((res) => {
-        console.log('log res:', res.data)
         dispatch({
           type: CreateArticle,
           payload: {
@@ -217,7 +211,6 @@ export const createArticle = (article, status) => {
         })
       })
       .catch((err) => {
-        console.log('log err:', err)
         dispatch({
           type: CreateArticle,
           payload: {
