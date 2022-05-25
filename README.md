@@ -6,5 +6,5 @@
 4.  Jalankan perintah go run main.go atau go build main.go pada Backend GoLang
 5.  Jalankan perintah yarn start / npm start di Frontend ReactJS ini
 
-Repository Backend: git@github.com:asrozy98/goLang-postArticle79.git
+Repository Backend: https://github.com/asrozy98/goLang-postArticle79.git
 Postman API link: https://www.getpostman.com/collections/5514a890059bd1648325
