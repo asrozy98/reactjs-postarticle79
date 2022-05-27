@@ -102,7 +102,6 @@ export const getArticleById = (id) => {
             category: res.data.data.category,
             created_at: res.data.data.created_date,
             updated_at: res.data.data.updated_date,
-            // allCount: res.data.allCount,
             error: false,
           },
         })

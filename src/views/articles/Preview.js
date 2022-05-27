@@ -30,7 +30,7 @@ const Preview = () => {
 
   useEffect(() => {
     dispatch(getArticles(page, 'Publish'))
-  }, [])
+  }, [dispatch, page])
 
   return (
     <CRow>

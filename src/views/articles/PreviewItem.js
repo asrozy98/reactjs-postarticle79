@@ -14,7 +14,7 @@ const PreviewItem = () => {
 
   useEffect(() => {
     dispatch(getArticleById(params.id))
-  }, [])
+  }, [dispatch, params.id])
 
   return (
     <CRow>

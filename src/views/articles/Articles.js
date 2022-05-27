@@ -36,13 +36,9 @@ const Articles = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getArticles(page, tabDefault))
     dispatch(getCountArticle())
-    if (message) {
-      dispatch(getArticles(page, tabDefault))
-      dispatch(getCountArticle())
-    }
-  }, [])
+    dispatch(getArticles(page, tabDefault))
+  }, [dispatch, page, tabDefault, message])
 
   const statusTab = ['Publish', 'Draft', 'Trash']
 
@@ -136,7 +132,9 @@ const Articles = () => {
                         <CButton
                           color="danger"
                           className="text-white"
-                          onClick={() => setStatus(article.id, article, 'Trash')}
+                          onClick={() => {
+                            setStatus(article.id, article, 'Trash')
+                          }}
                         >
                           <CIcon icon={cilTrash} size="lg" />
                         </CButton>
